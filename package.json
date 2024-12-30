@@ -1,0 +1,29 @@
+{
+  "name": "mmm-elprisswe",
+  "version": "1.0.0",
+  "description": "Module to fetch and show kWh-spot prices in sweden",
+  "main": "MMM-ElPrisSwe",
+  "author": "Per S",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prstrm/MMM-ElPrisSwe.git"
+  },
+  "keywords": [
+    "magicmirror",
+    "elpris",
+    "spot price",
+    "electrical cost"
+  ],
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "moment": "^2.29.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.10.0",
+    "@stylistic/eslint-plugin": "^2.7.2",
+    "eslint": "^9.10.0",
+    "globals": "^15.9.0"
+  },
+  "scripts": {}
+}

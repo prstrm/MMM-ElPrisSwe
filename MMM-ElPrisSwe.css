@@ -1,0 +1,36 @@
+.MMM-ElPrisSwe div {
+    color: purple;
+}
+
+.MMM-ElPrisSwe header {
+    padding-left: 8px;
+  }
+
+.MMM-ElPrisSwe table {
+    width: 350px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+  }
+  
+.MMM-ElPrisSwe th {
+    padding: 8px;
+    text-align: left;
+    font-size: 16px;
+  }
+  
+.MMM-ElPrisSwe td {
+    padding-left: 8px;
+    text-align: left;
+  }
+  
+.MMM-ElPrisSwe .currentRow {
+    font-weight: bold;
+  }
+
+.MMM-ElPrisSwe .previousRow {
+    font-weight: normal;
+  }
+
+  .MMM-ElPrisSwe .nextRow {
+    font-weight: normal;
+  }
