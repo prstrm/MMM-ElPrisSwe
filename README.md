@@ -1,6 +1,6 @@
 # MMM-ElPrisSwe
 
-A module that fetches energyprices from [elprisetjustnu.se](https://www.elprisetjustnu.se/elpris-api)'s API and shows the previous, current and next spot prices for one of the four zones (SE1/SE2/SE3/SE4)
+A module that fetches energyprices from [elprisetjustnu.se](https://www.elprisetjustnu.se/elpris-api)'s API and shows the previous, current and next spot prices for one of the four zones in Sweden (SE1/SE2/SE3/SE4)
 
 ## Installation
 
