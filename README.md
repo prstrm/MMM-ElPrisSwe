@@ -6,7 +6,7 @@ A module that fetches energyprices from [elprisetjustnu.se](https://www.elpriset
 
 ### Install
 
-In your terminal, go to your [MagicMirror²][mm] Module folder and clone MMM-ElPrisSwe:
+In your terminal, go to your [MagicMirror²](https://magicmirror.builders/) Module folder and clone MMM-ElPrisSwe:
 
 ```bash
 cd ~/MagicMirror/modules
@@ -43,7 +43,6 @@ Or you could use these options:
         config: {
             region: "SE3",                        // The zone to fetch prices from
             updateInterval: (60 * 5) * 1000,      // 5 min delay between update
-            initialLoadDelay: 100,                // Delay for initial update
             animationSpeed: 1000
         }
     },
@@ -55,8 +54,11 @@ Option|Possible values|Default|Description
 ------|------|------|-----------
 `region:`|`SE1, SE2, SE3, SE4`|SE3|Which region to fetch prices from (SE1 = Luleå / Norra Sverige, SE2 = Sundsvall / Norra Mellansverige, SE3 = Stockholm / Södra Mellansverige, SE4 = Malmö / Södra Sverige)
 `updateInterval:`|`int (ms)`|(60 * 5) * 1000 (5min) |How often you want the module to update and refresh the data.
-`initialLoadDelay:`|`int (ms)`|100|The delay when initially loading module
 `animationSpeed:`|`int (ms)`|1000|The speed for animations
+
+## Issues or requests
+This is my first public repo and first ever javascript thing so there is a 100% chance things can be made more efficient since I don't know what I'm doing basically, git or js-wise, I just really needed this module for my mirror :) 
+So if you want to optimize something or request a feature just go right ahead. 
 
 ## Credits and Thanks
 Infomation, inspiration and knowledge taken from:
