@@ -17,12 +17,12 @@ module.exports = NodeHelper.create({
     const today = new Date();
     const todayList = [
       today.getFullYear().toString(), // year
-      (today.getMonth() + 1).toString(), // month
-      today.getDate().toString()// day
+      (today.getMonth() + 1).toString().padStart(2, "0"), // month
+      today.getDate().toString().padStart(2, "0")	// day
       ];
-
+    console.log(todayList);	//debug
     const url = `https://www.elprisetjustnu.se/api/v1/prices/${todayList[0]}/${todayList[1]}-${todayList[2]}_${region}.json`;
-    // console.log(url) //debug
+    console.log(url) //debug
     try {
       const response = await fetch(url);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -39,6 +39,7 @@ module.exports = NodeHelper.create({
       const hour = date.getHours().toString().padStart(2, "0");
       return `${year}-${month}-${day}T${hour}`;
       };
+      // console.log(formatHour);
 
       // Hämta aktuell timme
       const currentHour = formatHour(now);
