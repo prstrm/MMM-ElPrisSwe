@@ -1,12 +1,12 @@
 Module.register("MMM-ElPrisSwe", {
 
   defaults: {
-    testMode: false,          		// Enable testmode or not
-    region: "SE3",            		// Regions - valid (SE1, SE2, SE3, SE4)
-    showIcon: true,           		// Shows icons
+    testMode: false,          		    // Enable testmode or not
+    region: "SE3",            		    // Regions - valid (SE1, SE2, SE3, SE4)
+    showIcon: true,           		    // Shows icons
     updateInterval: (60 * 5) * 1000,	// 5 min delay
-    initialLoadDelay: 100,    		// Delay for first update
-    animationSpeed: 1000,     		// How fast it should animate in millisecond
+    initialLoadDelay: 100,    		    // Delay for first update
+    animationSpeed: 1000,     		    // How fast it should animate in millisecond
   },
 
   // Required scripts
@@ -64,19 +64,7 @@ Module.register("MMM-ElPrisSwe", {
     var nextPrice = priceData[2]?.price != null ? Number(priceData[2].price) : 0;
     var nextHour = priceData[2]?.time != null ? priceData[2].time : "N/A";
 
-/*     // Create title row
-    var titleRow = document.createElement("tr");
-    
-    var titlePrice = document.createElement("th");
-    titlePrice.innerHTML = this.translate("Table_Title_Price");
-    titleRow.appendChild(titlePrice);
 
-    var titleTime = document.createElement("th");
-    titleTime.innerHTML = this.translate("Table_Title_Time");
-    titleRow.appendChild(titleTime);
-
-    table.appendChild(titleRow);  // Append row to table
- */
     // Create row-current
     var currentPriceRow = document.createElement("tr");
     currentPriceRow.className = "currentRow";
@@ -141,7 +129,6 @@ Module.register("MMM-ElPrisSwe", {
 	socketNotificationReceived: function(notification, payload) { 
 		if (notification === "DATA_RESULTS") {
 
-		  // this notification doesn't come back on error..
 		  this.processData(payload);
 		  this.updateDom(this.config.initialLoadDelay); 
 		}
@@ -149,8 +136,7 @@ Module.register("MMM-ElPrisSwe", {
 
 	// process data from node_helper
 	processData: function(data) { 
-		this.priceData = data; 
-		//console.log(data); // debug
+		this.priceData = data;
 		this.loaded = true;
 	},
 

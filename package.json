@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Module to fetch and show kWh-spot prices in sweden",
   "main": "MMM-ElPrisSwe",
-  "author": "Per S",
+  "author": "Per",
   "license": "MIT",
   "repository": {
     "type": "git",

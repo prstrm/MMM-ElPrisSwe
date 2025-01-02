@@ -1,7 +1,7 @@
 {
-    "Current_Price": "Current Price:",
-    "Previous_Price": "Previous Price:",
-    "Next_Price": "Next Price:",
+    "Current_Price": "Current:",
+    "Previous_Price": "Previous:",
+    "Next_Price": "Next:",
     "Region": "Zone:",
     "Loading_Module": "Loading prices...",
     "Currency": "SEK",

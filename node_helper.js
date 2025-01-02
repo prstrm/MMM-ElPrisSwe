@@ -6,9 +6,10 @@ module.exports = NodeHelper.create({
     console.log("Starting node helper for: " + this.name);
   },
 
+  // If notification is received then run this funtion with the incoming param: data.
   socketNotificationReceived: function(notification, data) {
     if (notification === "GET_DATA") {
-	    // console.log(data)
+	    // Log.info(data)   // Debug data recieved
       this.getPriceData(data);
     }
   },
@@ -16,20 +17,23 @@ module.exports = NodeHelper.create({
   getPriceData: async function(region) {
     const today = new Date();
     const todayList = [
-      today.getFullYear().toString(), // year
-      (today.getMonth() + 1).toString().padStart(2, "0"), // month
-      today.getDate().toString().padStart(2, "0")	// day
+      today.getFullYear().toString(),                     // Get year as str
+      (today.getMonth() + 1).toString().padStart(2, "0"), // Get month as str with double digit (01, 02, etc...)
+      today.getDate().toString().padStart(2, "0")	        // Get day as str with double digit (01, 02, etc...)
       ];
-    console.log(todayList);	//debug
+    // Log.info(todayList);	  // Debug list
+
     const url = `https://www.elprisetjustnu.se/api/v1/prices/${todayList[0]}/${todayList[1]}-${todayList[2]}_${region}.json`;
-    console.log(url) //debug
+    // Log.info(url)          // Debug url
+    
+    // Trying to fetch data with param: url
     try {
       const response = await fetch(url);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
   
       const data = await response.json();
 
-      // Hämta aktuell tid
+      // Get date and time
       const now = new Date();
 
       const formatHour = date => {
@@ -39,23 +43,21 @@ module.exports = NodeHelper.create({
       const hour = date.getHours().toString().padStart(2, "0");
       return `${year}-${month}-${day}T${hour}`;
       };
-      // console.log(formatHour);
 
-      // Hämta aktuell timme
+      // Current hour
       const currentHour = formatHour(now);
 
-      // Hämta föregående timme
+      // Previous hour
       const previousHourDate = new Date(now);
       previousHourDate.setHours(now.getHours() - 1);
       const previousHour = formatHour(previousHourDate);
 
-      // Hämta nästa timme
+      // Next hour
       const nextHourDate = new Date(now);
       nextHourDate.setHours(now.getHours() + 1);
       const nextHour = formatHour(nextHourDate);
 
-
-      // Filtrera ut raden för de aktuella timmarna
+      // Filter out hours
       const currentPriceData = data.find(item => item.time_start.startsWith(currentHour));
       const previousPriceData = data.find(item => item.time_start.startsWith(previousHour));
       const nextPriceData = data.find(item => item.time_start.startsWith(nextHour));
@@ -72,17 +74,17 @@ module.exports = NodeHelper.create({
             {price: previousPrice, time: previousHour},
             {price: nextPrice, time: nextHour},
         ];
-        //console.log(prices);
 
+        Log.info(`${this.name}: Fetching new prices from ${this.config.region}!`)
         this.sendSocketNotification("DATA_RESULTS", prices);
 
     } else {
-        console.log("No data found for this specific time");
+        Log.info("No data found for this specific time");
         this.sendSocketNotification("SEND_DATA", { prices: [] });
     }
 
     } catch (error) {
-      console.error("An error occured:", error);
+      Log.info("An error occured:", error);
     }
   },
 });
